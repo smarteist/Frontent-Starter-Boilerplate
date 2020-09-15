@@ -44,6 +44,7 @@
     "file-loader": "^6.0.0",
     "glob": "^7.1.6",
     "html-loader": "^1.1.0",
+    "html-srcsets-loader": "^0.5.1",
     "html-webpack-plugin": "^4.3.0",
     "image-webpack-loader": "^7.0.0",
     "mini-css-extract-plugin": "^0.11.2",

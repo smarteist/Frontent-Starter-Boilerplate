@@ -29,6 +29,18 @@ module.exports = function (env, args) {
     module: {
       rules: [
         {
+          test: /\.(html)$/,
+          use: {
+            loader: "html-srcsets-loader",
+            options: {
+              attrs: [":src", ':srcset'],
+              interpolate: true,
+              minimize: false,
+              removeComments: false,
+            }
+          }
+        },
+        {
           test: /\.(sa|sc|c)ss$/,
           use: [
             {
@@ -67,13 +79,13 @@ module.exports = function (env, args) {
           ],
         },
         {
+          test: /\.(js)$/,
+          loader: 'babel-loader',
+        },
+        {
           enforce: 'pre', // checked before being processed by babel-loader
           test: /\.(js)$/,
           loader: 'eslint-loader',
-        },
-        {
-          test: /\.(js)$/,
-          loader: 'babel-loader',
         },
         {
           test: /\.(png|svg|jpe?g|gif)$/,
@@ -81,14 +93,9 @@ module.exports = function (env, args) {
             {
               loader: 'file-loader',
               options: {
-                outputPath: (url, resourcePath) => {
-                  if (/icon\.png|tile\.png|tile-wide\.png/.test(resourcePath)) {
-                    return url
-                  } else {
-                    return `images/${url}`
-                  }
-                },
-                name: '[name].[ext]',
+                name: "[name].[ext]",
+                outputPath: "images",
+                esModule: false,
               },
             },
             {
