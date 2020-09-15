@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <title>Frontend Starter</title>
+  <meta name="description" content="">
+
+  <%= require('html-loader!./partials/head.html') %>
+
+</head>
+<body>
+
+<%= require('html-loader!./partials/browserupgrade.html') %>
+
+<div class="d-flex flex-column h-100">
+
+  <%= require('html-loader!./partials/header.html') %>
+
+  <main class="d-flex h-100 align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <section class="col-7">
+          <h1>Let's start!</h1>
+          <p class="lead">
+            “The secret of getting ahead is getting started.” – Mark Twain.
+          </p>
+          <small class="text-muted">Build your projects like spark</small>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <%= require('html-loader!./partials/footer.html') %>
+
+</div>
+</body>
+</html>

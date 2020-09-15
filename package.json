@@ -1,0 +1,61 @@
+{
+  "name": "frontend-starter-boilerplate-v2",
+  "description": "Webpack, Sass, Bootstrap, Html, Project Boilerplate",
+  "keywords": [],
+  "version": "2.0.0",
+  "author": "Ali Hosseini",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smarteist/Frontent-Starter-Boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/smarteist/Frontent-Starter-Boilerplate/issues"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=development",
+    "start": "webpack --mode=development --watch",
+    "start:externalServer": "webpack --mode=development --watch",
+    "production": "set NODE_ENV=production && webpack --mode=production",
+    "development": "set NODE_ENV=development && webpack --mode development",
+    "watch": "npm run dev:watch",
+    "lint": "eslint assets/scripts/*.js",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.0",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.5.1",
+    "normalize-scss": "^7.0.1",
+    "popper.js": "^1.16.1",
+    "sass-material-colors": "^0.0.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "browser-sync": "^2.26.12",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "css-loader": "^4.3.0",
+    "eslint": "^7.3.0",
+    "eslint-loader": "^4.0.2",
+    "file-loader": "^6.0.0",
+    "glob": "^7.1.6",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "image-webpack-loader": "^7.0.0",
+    "mini-css-extract-plugin": "^0.11.2",
+    "node-sass": "^4.14.1",
+    "postcss": "^7.0.0",
+    "postcss-loader": "^4.0.1",
+    "precss": "^4.0.0",
+    "resolve-url-loader": "^3.1.1",
+    "sass-loader": "^10.0.2",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
