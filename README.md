@@ -58,7 +58,7 @@ Shorten directories and files structure which you'll see after build:
 │  ├──▼ assets/            # template asset files
 │  │  ├──► fonts/          # place template fonts files here
 │  │  ├──► images/         # template images files
-│  │  └──► styles/         # template style files
+│  │  └──▼ styles/         # template style files
 │  │     ├── [...]         # 7-1 Sass architecture folders
 │  │     └── main.scss     # main Sass file that references scss source files
 │  ├──▼ html/              # template HTML files
