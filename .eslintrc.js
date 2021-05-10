@@ -9,7 +9,7 @@ module.exports = {
     // https://github.com/eslint/eslint/blob/master/conf/eslint-recommended.js
     'eslint:recommended',
   ],
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',

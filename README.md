@@ -1,9 +1,9 @@
 # FRONTEND BOILERPLATE
 
-[![Bootstrap](https://flat.badgen.net/badge/bootstrap/4.5.0/7952b3)](https://getbootstrap.com)
+[![Bootstrap](https://flat.badgen.net/badge/bootstrap/4.6.0/7952b3)](https://getbootstrap.com)
 [![Bootstrap](https://flat.badgen.net/badge/fontawesome/4.7.0/1152b3)](https://getbootstrap.com)
-[![Bootstrap](https://flat.badgen.net/badge/jQuery/3.5.1/3152b3)](https://getbootstrap.com)
-[![Webpack](https://flat.badgen.net/badge/webpack/4/14aaf3)](https://webpack.js.org)
+[![Bootstrap](https://flat.badgen.net/badge/jQuery/3.6.0/3152b3)](https://getbootstrap.com)
+[![Webpack](https://flat.badgen.net/badge/webpack/5/14aaf3)](https://webpack.js.org)
 [![license](https://flat.badgen.net/github/license/smarteist/Frontent-Starter-Boilerplate)](https://raw.githubusercontent.com/smarteist/Frontent-Starter-Boilerplate/master/LICENSE)
 
 This boilerplate uses [Webpack](https://webpack.js.org/) boundler and its dev server helps you build web apps and sites much faster.
@@ -14,9 +14,9 @@ this project also uses [Bootstrap](https://getbootstrap.com/) , and a modern dev
 * **Live reloading** <br> browser update after changes
 * **Automatically optimization** entry files <br> concatenate, minify and inject output files to HTML
 * **[Sass](https://sass-lang.com/) for stylesheets** <br> with [the 7-1 Pattern](https://sass-guidelin.es/#the-7-1-pattern)
-* **[Webpack 4](https://webpack.js.org/)** a good configuration - module bundler
+* **[Webpack 5](https://webpack.js.org/)** a good configuration - module bundler
 * **[Bootstrap 4](http://getbootstrap.com/)** - the most popular HTML, CSS and JS framework
-* **[jQuery 3.4.1](http://jquery.com/)** - JavaScript library
+* **[jQuery 3.6.0](http://jquery.com/)** - JavaScript library
 * **[Font Awesome 4.7](https://fontawesome.com/v4.7.0/icons/)** - the web's most popular vector icons and social logos
 
 
