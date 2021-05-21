@@ -37,7 +37,7 @@ module.exports = function (env, args) {
             options: {
               attrs: [":src", ':srcset'],
               interpolate: true,
-              minimize: (args.mode === 'production'),
+              minimize: false,
               removeComments: false,
             }
           }
