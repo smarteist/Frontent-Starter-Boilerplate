@@ -9,6 +9,8 @@ const devServerConfiguration = {
     baseDir: 'dist',
   },
   port: 8080,
+  open: 'external',
+  watch: true
 };
 
 // eslint-disable-next-line no-unused-vars
@@ -35,7 +37,7 @@ module.exports = function (env, args) {
             options: {
               attrs: [":src", ':srcset'],
               interpolate: true,
-              minimize: false,
+              minimize: (args.mode === 'production'),
               removeComments: false,
             }
           }
@@ -101,7 +103,7 @@ module.exports = function (env, args) {
             {
               loader: 'image-webpack-loader',
               options: {
-                disable: process.env.NODE_ENV !== 'production', // Disable during development
+                disable: (args.mode !== 'production'), // Disable during development
                 mozjpeg: {
                   progressive: true,
                   quality: 75
@@ -140,7 +142,7 @@ module.exports = function (env, args) {
       }),
       new BrowserSyncPlugin({
         ...devServerConfiguration,
-        files: ['src/*'],
+        files: ['./src/**/*'],
         ghostMode: {
           location: false,
         },
@@ -150,9 +152,16 @@ module.exports = function (env, args) {
         reloadDelay: 0,
       }),
       new MiniCssExtractPlugin({
-        filename: './css/styles.css'
+        filename: 'css/styles.css',
+        experimentalUseImportModule: false
       }),
     ]
   }
+
 }
 
+// Read this
+console.log(
+  '\x1b[41m\x1b[38m%s\x1b[0m',
+  '\n[REMEMBER TO RESTART THE SERVER WHEN YOU ADD A NEW HTML FILE.]\n'
+);
