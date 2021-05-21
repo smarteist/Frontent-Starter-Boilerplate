@@ -48,7 +48,7 @@ module.exports = function (env, args) {
             {
               loader: MiniCssExtractPlugin.loader,
               options: {
-                publicPath: '../',
+                esModule: true,
               }
             },
             {
