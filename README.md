@@ -1,21 +1,22 @@
 # FRONTEND BOILERPLATE
 
-[![Bootstrap](https://flat.badgen.net/badge/bootstrap/4.6.0/7952b3)](https://getbootstrap.com)
-[![Bootstrap](https://flat.badgen.net/badge/fontawesome/4.7.0/1152b3)](https://getbootstrap.com)
-[![Bootstrap](https://flat.badgen.net/badge/jQuery/3.6.0/3152b3)](https://getbootstrap.com)
-[![Webpack](https://flat.badgen.net/badge/webpack/5/14aaf3)](https://webpack.js.org)
-[![license](https://flat.badgen.net/github/license/smarteist/Frontent-Starter-Boilerplate)](https://raw.githubusercontent.com/smarteist/Frontent-Starter-Boilerplate/master/LICENSE)
+[![Bootstrap](https://img.shields.io/static/v1?label=Bootstrap&message=5.0.1&color=blueviolet)](https://getbootstrap.com)
+[![FontAwesome](https://img.shields.io/static/v1?label=FontAwesome&message=4.7.0&color=brightgreen)](http://fontawesome.com/v4.7.0)
+[![Bootstrap](https://img.shields.io/static/v1?label=jQuery&message=3.6.0&color=orange)](http://jquery.com)
+[![Webpack](https://img.shields.io/static/v1?label=Webpack&message=5&color=83c6e8)](https://webpack.js.org)
+[![BrowserSync](https://img.shields.io/static/v1?label=BrowserSync&message=2&color=red)](https://browsersync.io)
+[![license](https://img.shields.io/static/v1?label=Licence&message=MIT&color=blue)](https://raw.githubusercontent.com/smarteist/Frontent-Starter-Boilerplate/master/LICENSE)
 
 This boilerplate uses [Webpack](https://webpack.js.org/) boundler and its dev server helps you build web apps and sites much faster.
 this project also uses [Bootstrap](https://getbootstrap.com/) , and a modern development workflow.
 
 ## Features
 
-* **Live reloading** <br> browser update after changes
+* **Live reloading** Time-saving synchronised browser update after changes by using [BrowserSync](https://browsersync.io/).
 * **Automatically optimization** entry files <br> concatenate, minify and inject output files to HTML
 * **[Sass](https://sass-lang.com/) for stylesheets** <br> with [the 7-1 Pattern](https://sass-guidelin.es/#the-7-1-pattern)
 * **[Webpack 5](https://webpack.js.org/)** a good configuration - module bundler
-* **[Bootstrap 4](http://getbootstrap.com/)** - the most popular HTML, CSS and JS framework
+* **[Bootstrap 5](http://getbootstrap.com/)** - the most popular HTML, CSS and JS framework
 * **[jQuery 3.6.0](http://jquery.com/)** - JavaScript library
 * **[Font Awesome 4.7](https://fontawesome.com/v4.7.0/icons/)** - the web's most popular vector icons and social logos
 
@@ -24,7 +25,7 @@ this project also uses [Bootstrap](https://getbootstrap.com/) , and a modern dev
 
 [Node.js](http://nodejs.org/) and npm is required dependency to work with *this starter*.
 <br><br>
-You can optionally use [Yarn](https://yarnpkg.com/en/) package manager.
+You can optionally use [Yarn](https://yarnpkg.com/en/) package manager as well.
 
 
 #### Installation

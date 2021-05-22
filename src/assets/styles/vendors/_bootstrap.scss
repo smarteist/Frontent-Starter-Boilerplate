@@ -1,5 +1,63 @@
 // -----------------------------------------------------------------------------
-// Bootstrap 4
-// http://getbootstrap.com
+// Bootstrap v5.0.1
+// (https://getbootstrap.com/)
+// Use Only What You Need
 // -----------------------------------------------------------------------------
-@import "~bootstrap";
+
+// Configuration
+@import "~bootstrap/scss/functions";
+// Copy this and edit if needed
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+
+// Layout & components
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/accordion";
+@import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/toasts";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/popover";
+@import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/spinners";
+@import "~bootstrap/scss/offcanvas";
+
+// Helpers
+@import "~bootstrap/scss/helpers";
+
+// Utilities
+@import "~bootstrap/scss/utilities/api";
+// scss-docs-end import-stack
+// Bootstrap Components Color variable changes
+
+// Some colors
+$text-muted: rgba(#{var(--default-text-color-rgb)}, 0.5) !default;
+
+// Input check colors as css variable
+$form-check-input-checked-bg-color: #{var(--secondary-color)} !default;
+$form-check-input-focus-border: rgba(#{var(--secondary-color-rgb)}, 0.50) !default;
+$form-check-input-checked-border-color: #{var(--secondary-color)} !default;
+$form-check-input-indeterminate-bg-color: #{var(--secondary-color)} !default;
+$form-check-input-indeterminate-border-color: #{var(--secondary-color)} !default;
+$input-btn-focus-color: rgba(#{var(--secondary-color-rgb)}, 0.25) !default;

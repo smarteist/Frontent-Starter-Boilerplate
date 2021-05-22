@@ -4,35 +4,37 @@
 
 // Colors
 //
-$indigo: #5800e8;
-$purple: #6900c7;
-$orange: #f76400;
-$yellow: #f4a100;
-$green: #00ac69;
-$teal: #00ba94;
-$cyan: #00cfd5;
-$pink: #e30059;
-$red: #e81500;
-$white: #ffffff;
+$blue: material-color('blue', '500');
+$indigo: material-color('deep-purple', 'a400');
+$purple: material-color('purple', 'a400');
+$pink: material-color('pink', 'a400');
+$red: material-color('red', 'a400');
+$orange: material-color('orange', 'a400');
+$yellow: material-color('yellow', 'a400');
+$green: material-color('green', 'a400');
+$teal: material-color('teal', 'a400');
+$cyan: material-color('cyan', 'a400');
+$gray: material-color('grey', '600');
+$gray-dark: material-color('grey', '800');
 
-$primary: #0061f2 !default;
-$secondary: $purple !default;
+$primary: $pink !default;
+$secondary: material-color('lime', 'a400') !default;
 $success: $green !default;
-$danger: $red !default;
-$warning: $yellow !default;
 $info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
 $light: material-color('grey', '50') !default;
-$dark: material-color('grey', '800') !default;
+$dark: material-color('grey', '900') !default;
+
 
 // Body
 //
 $body-bg: $light;
-$body-color: material-color('blue-grey', '900');
+$body-color: #{var(--default-text-color)};
 
 
 // Typography
 //
-
 $font-family-sans-serif: Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 $font-family-base: $font-family-sans-serif;
 
@@ -51,8 +53,18 @@ $h3-font-size: $font-size-base * 1.75;
 
 $headings-font-weight: $font-weight-bolder;
 
-
-// Header
+// Bootstrap 5 Components Color variable changes
+// all variables could be fine in "~bootstrap/scss/variables"
+// of course todo more changes...
 //
 
-$header-bg: $body-bg;
+// BS text muted color
+$text-muted: rgba(#{var(--default-text-color-rgb)}, 0.5) !default;
+
+// BS input check colors as css variable
+$form-check-input-checked-bg-color: #{var(--secondary-color)} !default;
+$form-check-input-focus-border: rgba(#{var(--secondary-color-rgb)}, 0.50) !default;
+$form-check-input-checked-border-color: #{var(--secondary-color)} !default;
+$form-check-input-indeterminate-bg-color: #{var(--secondary-color)} !default;
+$form-check-input-indeterminate-border-color: #{var(--secondary-color)} !default;
+$input-btn-focus-color: rgba(#{var(--secondary-color-rgb)}, 0.25) !default;

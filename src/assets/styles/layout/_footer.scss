@@ -2,6 +2,6 @@
 // Footer of the site/application
 // -----------------------------------------------------------------------------
 .footer {
-  color: $light;
-  background-color: $dark;
+  color: var(--primary-text-color);
+  background-color: var(--primary-color);
 }

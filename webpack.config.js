@@ -49,6 +49,7 @@ module.exports = function (env, args) {
               loader: MiniCssExtractPlugin.loader,
               options: {
                 esModule: true,
+                publicPath: '../',
               }
             },
             {
@@ -88,6 +89,7 @@ module.exports = function (env, args) {
           enforce: 'pre', // checked before being processed by babel-loader
           test: /\.(js)$/,
           loader: 'eslint-loader',
+          exclude: /node_modules/,
         },
         {
           test: /\.(png|svg|jpe?g|gif)$/,
@@ -152,7 +154,7 @@ module.exports = function (env, args) {
         reloadDelay: 0,
       }),
       new MiniCssExtractPlugin({
-        filename: 'css/styles.css',
+        filename: './css/styles.css',
         experimentalUseImportModule: false
       }),
     ]

@@ -2,6 +2,20 @@
 // Header of the site/application
 // -----------------------------------------------------------------------------
 .header {
-  color: $light;
-  background-color: $dark;
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+
+  a {
+    color: var(--primary-text-color);
+
+    &:hover {
+      color: var(--secondary-color);
+    }
+  }
+
 }

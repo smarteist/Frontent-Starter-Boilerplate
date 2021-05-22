@@ -1,0 +1,20 @@
+// -----------------------------------------------------------------------------
+// Default theme
+// -----------------------------------------------------------------------------
+html[data-theme='dark'] {
+  --primary-color: #{$gray-900};
+  --primary-color-rgb: #{toRGB($gray-900, true)};
+  --secondary-color: #{$yellow};
+  --secondary-color-rgb: #{toRGB($yellow, true)};
+  --bg-color: #{$gray-800};
+  --default-text-color: #{a11y-color($white, $gray-800)};
+  --default-text-color-rgb: #{toRGB(a11y-color($white, $gray-800,'AAA'), true)};
+  --primary-text-color: #{a11y-color($white, $gray-800,'AAA')};
+  --primary-text-color-rgb: #{toRGB(a11y-color($white, $gray-800,'AAA'), true)};
+  --secondary-text-color: #{a11y-color($gray-800, $yellow)};
+
+  body {
+    color: var(--default-text-color);
+    background: var(--bg-color);
+  }
+}

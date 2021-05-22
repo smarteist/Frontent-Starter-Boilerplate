@@ -1,3 +1,15 @@
 // -----------------------------------------------------------------------------
 // Default theme
 // -----------------------------------------------------------------------------
+html, html[data-theme="default"], html[data-theme="light"] {
+  --primary-color: #{$primary};
+  --primary-color-rgb: #{toRGB($primary, true)};
+  --secondary-color: #{$secondary};
+  --secondary-color-rgb: #{toRGB($secondary, true)};
+  --bg-color: #{$body-bg};
+  --default-text-color: #{a11y-color($gray-800, $body-bg,'AAA')};
+  --default-text-color-rgb: #{toRGB(a11y-color($gray-800, $body-bg,'AAA'), true)};
+  --primary-text-color: #{a11y-color($light, $primary,'AAA')};
+  --primary-text-color-rgb: #{toRGB(a11y-color($light, $primary,'AAA'), true)};
+  --secondary-text-color: #{a11y-color(invert($secondary), $secondary)};
+}
