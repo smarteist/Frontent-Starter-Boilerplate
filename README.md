@@ -40,14 +40,13 @@ Its Done.
 
 #### Build commands
 
-* `yarn start` or `npm run start` ─ compile assets when file changes are made, start [webpack-dev-server](https://github.com/webpack/webpack-dev-server) session
-* `yarn watch` or `npm run watch` ─ webpack can watch files and recompile whenever they change.
-* `yarn build` or `npm run build` ─ compile and optimize (the files in your assets directory) for production.
+* `yarn start` or `npm run start` ─ webpack can watch files and recompile whenever they change, and start [BrowserSync](https://browsersync.io/) server session.
+* `yarn build` or `npm run build` ─ compile assets without any compression or optimization.
+* `yarn build:production` or `npm run build:production` ─ compile and optimize (the files in your assets directory) for production.
 * `yarn clean` or `npm run clean` ─ cleanup previous build files in /dist folder.
+* `yarn lint:js` or `npm run lint:js` ─  this command will lint all js files based on ```.eslintrc.js```.
+* `yarn lint:style` or `npm run lint:style` ─ This command will lint all js files based on ```.stylelintrc.js```
 
-## License
-
-Code released under the [MIT license](https://raw.githubusercontent.com/smarteist/Frontent-Starter-Boilerplate/master/LICENSE).
 ## Structure
 
 Shorten directories and files structure which you'll see after build: 
@@ -85,6 +84,7 @@ Shorten directories and files structure which you'll see after build:
 │  └── [...]
 ├── .babelrc               # Babel configuration file
 ├── .eslintrc.js           # ESLint configuration file
+├── .stylelintrc.js        # StyleLint configuration file
 ├── package.json           # Node.js dependencies and scripts
 ├── webpack.config.js      # Webpack configuration file
 ├── package-lock.json      # Node.js dependencies lock file (don't edit)

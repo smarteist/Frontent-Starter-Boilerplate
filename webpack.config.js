@@ -3,6 +3,8 @@ const glob = require("glob");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
+
 // dev server configuration
 const devServerConfiguration = {
   server: {
@@ -28,6 +30,14 @@ module.exports = function (env, args) {
       // Turn off size warnings for entry points
       hints: false,
     },
+    stats: {
+      // Turn off information about the built modules.
+      modules: false,
+      colors: true,
+    },
+    /// -------
+    /// MODULES
+    /// -------
     module: {
       rules: [
         {
@@ -132,6 +142,9 @@ module.exports = function (env, args) {
         },
       ],
     },
+    /// -------
+    /// PLUGINS
+    /// -------
     plugins: [
       // sync html files dynamically
       ...glob.sync('src/html/**/*.html').map(fileName => {
@@ -152,6 +165,12 @@ module.exports = function (env, args) {
         logFileChanges: true,
         notify: true,
         reloadDelay: 0,
+      }),
+      new StylelintPlugin({
+        emitErrors: true,
+        emitWarning: true,
+        configFile: path.resolve(__dirname, './.stylelintrc.js'),
+        context: path.resolve(__dirname, './src/assets/styles'),
       }),
       new MiniCssExtractPlugin({
         filename: './css/styles.css',

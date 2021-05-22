@@ -1,6 +1,6 @@
 {
   "name": "frontend-starter-boilerplate-v2",
-  "description": "Webpack, Sass, Bootstrap, Html, Project Boilerplate",
+  "description": "Webpack, Sass, Bootstrap, Html, Boilerplate, BrowserSync",
   "keywords": [],
   "version": "2.1.0",
   "author": "Ali Hosseini",
@@ -12,15 +12,12 @@
   "bugs": {
     "url": "https://github.com/smarteist/Frontent-Starter-Boilerplate/issues"
   },
-  "main": "index.js",
   "scripts": {
-    "build": "webpack --mode=development",
     "start": "webpack --mode=development --watch",
-    "start:externalServer": "webpack --mode=development --watch",
-    "production": "set NODE_ENV=production && webpack --mode=production",
-    "development": "set NODE_ENV=development && webpack --mode development",
-    "watch": "npm run dev:watch",
-    "lint": "eslint \"./src/scripts/*.js\"",
+    "build": "set NODE_ENV=development && webpack --mode=development",
+    "build:production": "set NODE_ENV=production && webpack --mode=production",
+    "lint:js": "eslint \"./src/scripts/**/*.js\"",
+    "lint:style": "stylelint \"./src/assets/styles/**/*.{css,sass,scss}\"",
     "clean": "rm -rf dist"
   },
   "dependencies": {
@@ -55,6 +52,9 @@
     "resolve-url-loader": "^4.0.0",
     "sass-loader": "^11.1.1",
     "style-loader": "^2.0.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-recommended": "^5.0.0",
+    "stylelint-webpack-plugin": "^2.1.1",
     "webpack": "^5.37.1",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
