@@ -45,7 +45,7 @@ Its Done.
 * `yarn build:production` or `npm run build:production` ─ compile and optimize (the files in your assets directory) for production.
 * `yarn clean` or `npm run clean` ─ cleanup previous build files in /dist folder.
 * `yarn lint:js` or `npm run lint:js` ─  this command will lint all js files based on ```.eslintrc.js```.
-* `yarn lint:style` or `npm run lint:style` ─ This command will lint all js files based on ```.stylelintrc.js```
+* `yarn lint:style` or `npm run lint:style` ─ This command will lint all style files based on ```.stylelintrc.js```
 
 ## Structure
 
