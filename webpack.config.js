@@ -169,8 +169,8 @@ module.exports = function (env, args) {
       new StylelintPlugin({
         emitErrors: true,
         emitWarning: true,
-        configFile: path.resolve(__dirname, './.stylelintrc.js'),
-        context: path.resolve(__dirname, './src/assets/styles'),
+        configFile: path.resolve(__dirname, '.stylelintrc.js'),
+        context: path.resolve(__dirname, 'src/assets/styles'),
       }),
       new MiniCssExtractPlugin({
         filename: './css/styles.css',
