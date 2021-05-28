@@ -50,14 +50,3 @@
 @import "~bootstrap/scss/utilities/api";
 // scss-docs-end import-stack
 // Bootstrap Components Color variable changes
-
-// Some colors
-$text-muted: rgba(#{var(--default-text-color-rgb)}, 0.5) !default;
-
-// Input check colors as css variable
-$form-check-input-checked-bg-color: #{var(--secondary-color)} !default;
-$form-check-input-focus-border: rgba(#{var(--secondary-color-rgb)}, 0.50) !default;
-$form-check-input-checked-border-color: #{var(--secondary-color)} !default;
-$form-check-input-indeterminate-bg-color: #{var(--secondary-color)} !default;
-$form-check-input-indeterminate-border-color: #{var(--secondary-color)} !default;
-$input-btn-focus-color: rgba(#{var(--secondary-color-rgb)}, 0.25) !default;
