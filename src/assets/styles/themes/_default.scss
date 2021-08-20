@@ -7,9 +7,14 @@ html, html[data-theme="default"], html[data-theme="light"] {
   --secondary-color: #{$secondary};
   --secondary-color-rgb: #{toRGB($secondary, true)};
   --bg-color: #{$body-bg};
-  --default-text-color: #{a11y-color($gray-800, $body-bg,'AAA')};
-  --default-text-color-rgb: #{toRGB(a11y-color($gray-800, $body-bg,'AAA'), true)};
-  --primary-text-color: #{a11y-color($light, $primary,'AAA')};
-  --primary-text-color-rgb: #{toRGB(a11y-color($light, $primary,'AAA'), true)};
-  --secondary-text-color: #{a11y-color(invert($secondary), $secondary)};
+  --bg-color-rgb: #{toRGB($body-bg, true)};
+  --text-color: #{a11y-color($text-color, $body-bg,'AAA')};
+  --text-color-rgb: #{toRGB(a11y-color($text-color, $body-bg,'AAA'), true)};
+  --text-color-contrast: #{$text-color-contrast};
+  --text-color-contrast-rgb: #{toRGB($text-color-contrast, true)};
+
+  body {
+    color: var(--text-color);
+    background: var(--bg-color);
+  }
 }

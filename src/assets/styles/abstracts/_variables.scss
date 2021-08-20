@@ -17,8 +17,8 @@ $cyan: material-color('cyan', 'a400');
 $gray: material-color('grey', '600');
 $gray-dark: material-color('grey', '800');
 
-$primary: $pink !default;
-$secondary: material-color('lime', 'a400') !default;
+$primary: material-color('orange', 'a200') !default;
+$secondary: material-color('blue', 'a400') !default;
 $success: $green !default;
 $info: $cyan !default;
 $warning: $yellow !default;
@@ -26,12 +26,8 @@ $danger: $red !default;
 $light: material-color('grey', '50') !default;
 $dark: material-color('grey', '900') !default;
 
-
-// Body
-//
-$body-bg: $light;
-$body-color: #{var(--default-text-color)};
-
+$text-color: material-color('grey', '800');
+$text-color-contrast: material-color('grey', '50');
 
 // Typography
 //
@@ -52,19 +48,3 @@ $h2-font-size: $font-size-base * 2;
 $h3-font-size: $font-size-base * 1.75;
 
 $headings-font-weight: $font-weight-bolder;
-
-// Bootstrap 5 Components Color variable changes
-// all variables could be fine in "~bootstrap/scss/variables"
-// of course todo more changes...
-//
-
-// BS text muted color
-$text-muted: rgba(#{var(--default-text-color-rgb)}, 0.5) !default;
-
-// BS input check colors as css variable
-$form-check-input-checked-bg-color: #{var(--secondary-color)} !default;
-$form-check-input-focus-border: rgba(#{var(--secondary-color-rgb)}, 0.50) !default;
-$form-check-input-checked-border-color: #{var(--secondary-color)} !default;
-$form-check-input-indeterminate-bg-color: #{var(--secondary-color)} !default;
-$form-check-input-indeterminate-border-color: #{var(--secondary-color)} !default;
-$input-btn-focus-color: rgba(#{var(--secondary-color-rgb)}, 0.25) !default;
