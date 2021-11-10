@@ -1,41 +1,48 @@
-// -----------------------------------------------------------------------------
-// Functions
-// -----------------------------------------------------------------------------
+/*
+* -----------------------------------------------------------------------------
+* Functions
+* -----------------------------------------------------------------------------
+*/
+@use "sass:math";
 
-@import "math";
-/// Helper: Remove (strip) Units
-/// @author Bourbon / Thoughbot
-///
-/// @parameter {Value} $value -Value, assumed number with unit
-///
-/// @example  scss - Usage
-///   line-height: strip-unit(1.5em);
-/// @example css - Output
-///   line-height: 1.5;
+/*
+* Helper: Remove (strip) Units
+* @author Bourbon / Thoughbot
+*
+* @parameter {Value} $value -Value, assumed number with unit
+*
+* @example  scss - Usage
+*   line-height: strip-unit(1.5em);
+* @example css - Output
+*   line-height: 1.5;
+*/
+
 @function strip-unit($value) {
   @return ($value / ($value * 0 + 1));
 }
 
-/// Return WCAG2.0 relative luminance
-/// Helper: Calculate Luminance of a single color
-/// @author Sérgio Gomes
-/// Adapted from: https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796
-///
-/// @require {list} $linear-channel-values (custom)
-/// @require {function} nth (core Sass)
-/// @require {function} red, green, blue (core Sass)
-///
-/// @param {Valid Color Value} Color to retreive luminance from
-///
-/// Note: White luminance is 1, Black luminance is 0
-///
-/// Note: To be used in other functions or mixins — creates non-standard CSS output:
-/// @example scss - Usage
-///    .sample { luminance: luminanceOf(#c00); }
-///
-/// @example css - Output
-///    .sample { luminance: 12.83679; }
-///
+/*
+* Return WCAG2.0 relative luminance
+* Helper: Calculate Luminance of a single color
+* @author Sérgio Gomes
+* Adapted from: https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796
+*
+* @require {list} $linear-channel-values (custom)
+* @require {function} nth (core Sass)
+* @require {function} red, green, blue (core Sass)
+*
+* @param {Valid Color Value} Color to retreive luminance from
+*
+* Note: White luminance is 1, Black luminance is 0
+*
+* Note: To be used in other functions or mixins — creates non-standard CSS output:
+* @example scss - Usage
+*    .sample { luminance: luminanceOf(#c00); }
+*
+* @example css - Output
+*    .sample { luminance: 12.83679; }
+*
+*/
 @function luminanceOf($color) {
   // Adapted from: https://github.com/LeaVerou/contrast-ratio/blob/gh-pages/color.js
   // Formula: http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
@@ -46,7 +53,7 @@
     $rgb: nth($rgba, $i);
     $rgb: $rgb / 255;
 
-    $rgb: if($rgb < .03928, $rgb / 12.92, pow(($rgb + .055) / 1.055, 2.4));
+    $rgb: if($rgb < .03928, $rgb / 12.92, math.pow(($rgb + .055) / 1.055, 2.4));
 
     $rgba2: append($rgba2, $rgb);
   }
@@ -54,25 +61,27 @@
   @return .2126 * nth($rgba2, 1) + .7152 * nth($rgba2, 2) + 0.0722 * nth($rgba2, 3);
 }
 
-/// Helper: Calculate "readability" as defined by WCAG 2.1
-/// @author Sérgio Gomes and J. Hogue
-/// Adapted from: https://github.com/LeaVerou/contrast-ratio/blob/gh-pages/color.js
-///
-/// @require {function} luminance (Custom)
-/// @require {function} round (core Sass)
-///
-/// @param {Valid Color Value} Color 1
-/// @param {Valid Color Value} Color 2
-///
-/// Note: Low contrast is 0, High contrast is 21.0
-///
-/// Note: To be used in other functions or mixins — creates non-standard CSS output:
-/// @example scss - Usage
-///    .sample { contrast-ratio: contrast-ratio(#c00, #fff); }
-///
-/// @example css - Output
-///    .sample { contrast-ratio: 5.89; }
-///
+/*
+* Helper: Calculate "readability" as defined by WCAG 2.1
+* @author Sérgio Gomes and J. Hogue
+* Adapted from: https://github.com/LeaVerou/contrast-ratio/blob/gh-pages/color.js
+*
+* @require {function} luminance (Custom)
+* @require {function} round (core Sass)
+*
+* @param {Valid Color Value} Color 1
+* @param {Valid Color Value} Color 2
+*
+* Note: Low contrast is 0, High contrast is 21.0
+*
+* Note: To be used in other functions or mixins — creates non-standard CSS output:
+* @example scss - Usage
+*    .sample { contrast-ratio: contrast-ratio(#c00, #fff); }
+*
+* @example css - Output
+*    .sample { contrast-ratio: 5.89; }
+*
+*/
 @function contrast-ratio($fg, $bg) {
   $luminance1: luminanceOf($fg) + 0.05;
   $luminance2: luminanceOf($bg) + 0.05;
@@ -80,69 +89,73 @@
   @if $luminance2 > $luminance1 {
     $ratio: 1 / $ratio;
   }
-  // Round to a hundreth because 6.96 should not pass a ratio of 7.0
+  /*Round to a hundreth because 6.96 should not pass a ratio of 7.0*/
   $ratio: round($ratio * 100) / 100;
   @return $ratio;
 }
 
-/// Helper: Depending on the unit recalculate a font size value into unitless pixels
-/// @author J. Hogue
-///
-/// @require {function} unit (core Sass)
-/// @require {function} strip-unit (custom)
-///
-/// @param {String} Number with or without unit
-///
-/// Note: To be used in other functions or mixins — creates non-standard CSS output:
-/// @example scss - Usage
-///    .sample { validate-font-size: validate-font-size(1em); }
-///
-/// @example css - Output
-///    .sample { validate-font-size: 16; }
-///
+/*
+* Helper: Depending on the unit recalculate a font size value into unitless pixels
+* @author J. Hogue
+*
+* @require {function} unit (core Sass)
+* @require {function} strip-unit (custom)
+*
+* @param {String} Number with or without unit
+*
+* Note: To be used in other functions or mixins — creates non-standard CSS output:
+* @example scss - Usage
+*    .sample { validate-font-size: validate-font-size(1em); }
+*
+* @example css - Output
+*    .sample { validate-font-size: 16; }
+*
+*/
 @function validate-font-size($size) {
-  // If it is already unitless, quickly return it
+  /*If it is already unites, quickly return it*/
   @if unit($size) == '' {
     @return $size;
   } @else if unit($size) == 'px' {
-    // We expect PX, so strip the value and return it
+    /*We expect PX, so strip the value and return it*/
     @return strip-unit($size);
   } @else if unit($size) == 'em' or unit($size) == 'rem' {
-    // Need to convert to a pixel value. Let's not overcomplicate it with possible EM inheritence scale factors
+    /*Need to convert to a pixel value. Let's not overcomplicate it with possible EM inheritence scale factors*/
     @return strip-unit($size * 16);
   } @else {
-    // Did our best. If an unexpected unit was supplied, let people know
+    /*Did our best. If an unexpected unit was supplied, let people know*/
     @error 'validate-font-size(): An unexpected font-size unit was supplied. PX, EM, or REM supported.';
   }
 }
 
-/// Helper: Determine the correct ratio value to use based on font-size and WCAG Level
-/// @author J. Hogue
-///
-/// @require {function} validate-font-size (custom)
-///
-/// @param {String} Level. 'AA' or 'AAA' expected, 'AA' default
-/// @param {Number} Font size in unitless px expected, 16 default
-/// @param {Boolean} Whether or not the fontis bold, false default
-///
-/// Note: To be used in other functions or mixins — creates non-standard CSS output:
-/// @example scss - Usage
-///    .sample { get-ratio: get-ratio('AAA', 19, true); }
-///
-/// @example css - Output
-///    .sample { get-ratio: 4.5; }
-///
+/*
+* Helper: Determine the correct ratio value to use based on font-size and WCAG Level
+* @author J. Hogue
+*
+* @require {function} validate-font-size (custom)
+*
+* @param {String} Level. 'AA' or 'AAA' expected, 'AA' default
+* @param {Number} Font size in unitless px expected, 16 default
+* @param {Boolean} Whether or not the fontis bold, false default
+*
+* Note: To be used in other functions or mixins — creates non-standard CSS output:
+* @example scss - Usage
+*    .sample { get-ratio: get-ratio('AAA', 19, true); }
+*
+* @example css - Output
+*    .sample { get-ratio: 4.5; }
+*
+*/
 @function get-ratio($level: 'AAA', $size: 16, $bold: false) {
-  // Default ratios
+  /*Default ratios*/
   $ratio: 4.5;
   @if $level == 'AAA' {
     $ratio: 7;
   }
 
-  // Make sure the size is valid
+  /*Make sure the size is valid*/
   $size: validate-font-size($size);
 
-  // Check font size
+  /*Check font size*/
   @if $size < 24 {
     // Small text, use defaults
     // But:
@@ -164,21 +177,23 @@
   @return $ratio;
 }
 
-/// Helper: Use contrast against white or black to determine if a color is "light" or "dark"
-/// @author Sérgio Gomes and J. Hogue
-/// Adapted from: https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796
-///
-/// @require {function} contrast-ratio (custom)
-///
-/// @param {String} {Valid Color Value} Color
-///
-/// Note: To be used in other functions or mixins — creates non-standard CSS output:
-/// @example scss - Usage
-///    .sample { light-or-dark: light-or-dark(#c00); }
-///
-/// @example css - Output
-///    .sample { light-or-dark: "light"; }
-///
+/*
+* Helper: Use contrast against white or black to determine if a color is "light" or "dark"
+* @author Sérgio Gomes and J. Hogue
+* Adapted from: https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796
+*
+* @require {function} contrast-ratio (custom)
+*
+* @param {String} {Valid Color Value} Color
+*
+* Note: To be used in other functions or mixins — creates non-standard CSS output:
+* @example scss - Usage
+*    .sample { light-or-dark: light-or-dark(#c00); }
+*
+* @example css - Output
+*    .sample { light-or-dark: "light"; }
+*
+*/
 @function light-or-dark($color) {
   // Check how the color performs against white and black
   $light-contrast: contrast-ratio($color, white);
@@ -192,25 +207,27 @@
   }
 }
 
-/// Also useful: Given one color, which is most readable with it, black or white?
-/// @author Sérgio Gomes and J. Hogue
-///
-/// @require {function} light-or-dark (custom)
-///
-/// @param {String} {Valid Color Value} Color
-///
-/// @example scss - Usage
-///     .sample {
-///       background-color: #c00;
-///       color: high-contrast-color(#c00);
-///     }
-///
-/// @example css - Output
-///     .sample {
-///       background-color: #c00;
-///       color: #fff;
-///     }
-///
+/*
+* Also useful: Given one color, which is most readable with it, black or white?
+* @author Sérgio Gomes and J. Hogue
+*
+* @require {function} light-or-dark (custom)
+*
+* @param {String} {Valid Color Value} Color
+*
+* @example scss - Usage
+*     .sample {
+*       background-color: #c00;
+*       color: high-contrast-color(#c00);
+*     }
+*
+* @example css - Output
+*     .sample {
+*       background-color: #c00;
+*       color: #fff;
+*     }
+*
+*/
 @function high-contrast-color($color) {
   $color-lod: light-or-dark($color);
 
@@ -221,33 +238,35 @@
   }
 }
 
-/// Return a color that passes for the chosen WCAG level without changing the Hue of the color
-/// @author A. Hosseini, J. Hogue
-///
-/// @require {function} validate-font-size (custom)
-/// @require {function} get-ratio (custom)
-/// @require {function} contrast-ratio (custom)
-/// @require {function} light-or-dark (custom)
-/// @require {function} scale-color (core Sass)
-///
-/// @param {String} {Valid Color Value} Color 1
-/// @param {String} {Valid Color Value} Color 2
-/// @param {String} Level. 'AA' or 'AAA' expected, 'AA' default
-/// @param {Number} Font size in unitless px expected, 16 default
-/// @param {Boolean} Whether or not the fontis bold, false default
-///
-/// @example scss - Usage
-///     .sample {
-///       background-color: #000;
-///       color: a11y-color(#c0c, #000);
-///     }
-///
-/// @example css - Output
-///     .sample {
-///       background-color: #000;
-///       color: #d200d2;
-///     }
-///
+/*
+* Return a color that passes for the chosen WCAG level without changing the Hue of the color
+* @author A. Hosseini, J. Hogue
+*
+* @require {function} validate-font-size (custom)
+* @require {function} get-ratio (custom)
+* @require {function} contrast-ratio (custom)
+* @require {function} light-or-dark (custom)
+* @require {function} scale-color (core Sass)
+*
+* @param {String} {Valid Color Value} Color 1
+* @param {String} {Valid Color Value} Color 2
+* @param {String} Level. 'AA' or 'AAA' expected, 'AA' default
+* @param {Number} Font size in unitless px expected, 16 default
+* @param {Boolean} Whether or not the fontis bold, false default
+*
+* @example scss - Usage
+*     .sample {
+*       background-color: #000;
+*       color: a11y-color(#c0c, #000);
+*     }
+*
+* @example css - Output
+*     .sample {
+*       background-color: #000;
+*       color: #d200d2;
+*     }
+*
+*/
 @function a11y-color($foreground, $background, $level: 'AA', $size: 16, $bold: false) {
   // Helper: make sure the font size value is acceptable
   $font-size: validate-font-size($size);
@@ -274,13 +293,15 @@
     }
     $percent: $percent + 2;
   }
-  // Couldn't find an answer
+  /*Couldn't find an answer*/
   @return if(lightness($foreground) < 51, #000, #FFF);
 }
 
-/// Converts hex to rgb form
-/// @param {String} {Valid Color Value}
-/// @param {Boolean} {Value in rgb() function or values only} 2
+/*
+* Converts hex to rgb form
+* @param {String} {Valid Color Value}
+* @param {Boolean} {Value in rgb() function or values only} 2
+*/
 @function toRGB ($color, $value:false) {
   $rgb: red($color) + ", " + green($color) + ", " + blue($color);
   @if $value {

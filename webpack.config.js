@@ -134,6 +134,10 @@ module.exports = function (env, args) {
         {
           test: /\.(woff(2)?|ttf|eot)(\?[a-z0-9=.]+)?$/,
           loader: 'file-loader',
+          type: 'asset/resource',
+          generator: {
+            filename: 'fonts/[hash].[ext]',
+          },
           options: {
             outputPath: 'fonts',
             name: '[name].[ext]',

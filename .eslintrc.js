@@ -18,7 +18,7 @@ module.exports = {
   rules: {
     'no-undef': 'off',
     'no-console': 'warn',
-    indent: ['warn', 2],
+    "index": "off"
   },
   // do not need if you using rule: 'no-undef':'off'
   // globals: {
