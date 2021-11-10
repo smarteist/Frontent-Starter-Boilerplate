@@ -103,6 +103,9 @@ module.exports = function (env, args) {
         },
         {
           test: /\.(png|svg|jpe?g|gif)$/,
+          generator: {
+            filename: 'images/[hash][ext]',
+          },
           use: [
             {
               loader: 'file-loader',
@@ -136,7 +139,7 @@ module.exports = function (env, args) {
           loader: 'file-loader',
           type: 'asset/resource',
           generator: {
-            filename: 'fonts/[hash].[ext]',
+            filename: 'fonts/[hash][ext]',
           },
           options: {
             outputPath: 'fonts',
