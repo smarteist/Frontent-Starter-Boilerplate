@@ -7,11 +7,13 @@ const StylelintPlugin = require('stylelint-webpack-plugin');
 
 // dev server configuration
 const devServerConfiguration = {
+  host: 'localhost',
   server: {
-    baseDir: 'dist',
+    baseDir: ['dist']
   },
   port: 8080,
   open: 'external',
+  reload: false,
   watch: true
 };
 
@@ -136,16 +138,10 @@ module.exports = function (env, args) {
         },
         {
           test: /\.(woff(2)?|ttf|eot)(\?[a-z0-9=.]+)?$/,
-          loader: 'file-loader',
           type: 'asset/resource',
           generator: {
-            filename: 'fonts/[hash][ext]',
-          },
-          options: {
-            outputPath: 'fonts',
-            name: '[name].[ext]',
-            limit: 10000, // if less than 100 kb, add base64 encoded image to css
-          },
+            filename: 'fonts/[name]-[hash][ext][query]',
+          }
         },
       ],
     },
