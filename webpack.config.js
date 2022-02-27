@@ -105,29 +105,10 @@ module.exports = function (env, args) {
         },
         {
           test: /\.(png|svg|jpe?g|gif)$/,
+          type: 'asset/resource',
           generator: {
             filename: 'images/[hash][ext]',
           },
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: "[name].[ext]",
-                outputPath: "images",
-                esModule: false,
-              },
-            },
-            {
-              loader: 'image-webpack-loader',
-              options: {
-                disable: (args.mode !== 'production'), // Disable during development
-                mozjpeg: {
-                  progressive: true,
-                  quality: 75
-                },
-              },
-            }
-          ],
         },
         {
           test: /(favicon\.ico|site\.webmanifest|browserconfig\.xml|robots\.txt|humans\.txt)$/,
