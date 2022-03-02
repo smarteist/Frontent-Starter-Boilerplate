@@ -7,6 +7,8 @@
 [![BrowserSync](https://img.shields.io/static/v1?label=BrowserSync&message=2&color=red)](https://browsersync.io)
 [![license](https://img.shields.io/static/v1?label=Licence&message=MIT&color=blue)](https://raw.githubusercontent.com/smarteist/Frontent-Starter-Boilerplate/master/LICENSE)
 
+![Image](https://raw.githubusercontent.com/smarteist/Frontent-Starter-Boilerplate/master/src/assets/images/favicon.ico)
+
 This boilerplate uses [Webpack](https://webpack.js.org/) boundler and its dev server helps you build web apps and sites much faster.
 this project also uses [Bootstrap](https://getbootstrap.com/) , and a modern development workflow.
 
