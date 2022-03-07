@@ -26,6 +26,12 @@ module.exports = function (env, args) {
       path: path.resolve(__dirname, 'dist'),
       filename: './js/index.bundle.js',
     },
+    // Defined to simplify complicated relative DIR addressing
+    resolve: {
+      alias: {
+        src: path.resolve(__dirname, 'src'),
+      }
+    },
     // Generate sourcemaps for proper error messages
     devtool: 'source-map',
     performance: {

@@ -1,11 +1,11 @@
 // JavaScript
-import './scripts/main'
+import 'src/scripts/main'
 
 // Styles
-import './assets/styles/main.scss'
+import 'src/assets/styles/main.scss'
 
 // Favicon
-import './assets/images/favicon.ico'
+import 'src/assets/images/favicon.ico'
 
 // Web App Manifest
-import './site.webmanifest'
+import 'src/site.webmanifest'
