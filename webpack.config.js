@@ -2,6 +2,7 @@ const path = require('path');
 const glob = require("glob");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 
@@ -104,12 +105,6 @@ module.exports = function (env, args) {
           loader: 'babel-loader',
         },
         {
-          enforce: 'pre', // checked before being processed by babel-loader
-          test: /\.(js)$/,
-          loader: 'eslint-loader',
-          exclude: /node_modules/,
-        },
-        {
           test: /\.(png|svg|jpe?g|gif)$/,
           type: 'asset/resource',
           generator: {
@@ -156,6 +151,11 @@ module.exports = function (env, args) {
         notify: true,
         reloadDelay: 0,
       }),
+      new ESLintPlugin({
+        emitError: true,
+        emitWarning: true,
+        context: path.resolve(__dirname, 'src/scripts'),
+      }),
       new StylelintPlugin({
         emitErrors: true,
         emitWarning: true,
@@ -172,6 +172,7 @@ module.exports = function (env, args) {
 }
 
 // Read this
+// eslint-disable-next-line no-console
 console.log(
   '\x1b[41m\x1b[38m%s\x1b[0m',
   '\n[REMEMBER TO RESTART THE SERVER WHEN YOU ADD A NEW HTML FILE.]\n'
