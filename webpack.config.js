@@ -1,64 +1,66 @@
 const path = require('path');
-const glob = require("glob");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
+const WatchHtmlPlugin = require('./WatchHtmlPlugin');
 
-// dev server configuration
+// Development server configuration
 const devServerConfiguration = {
   host: 'localhost',
   port: 8080,
   open: 'external',
-  reload: false,
-  watch: true,
-  notify: true,
-  reloadDelay: 0,
+  hot: true, // Enable Hot Module Replacement (HMR)
+  liveReload: true, // Enable live reloading
+  watchFiles: ['src/html/**/*.html'], // Watch HTML files
+  static: path.resolve(__dirname, 'dist'),
+  client: {
+    overlay: true, // Display errors in the browser
+  },
+  server: {
+    baseDir: ['dist'],
+  },
+  files: [path.resolve(__dirname, 'src/**/*')],
+  ghostMode: {
+    location: false,
+  },
+  injectChanges: true,
+  logFileChanges: true,
 };
 
-// eslint-disable-next-line no-unused-vars
 module.exports = function (env, args) {
-
   return {
     entry: './src/index.js',
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: './js/index.bundle.js',
     },
-    // Defined to simplify complicated relative DIR addressing
     resolve: {
       alias: {
         src: path.resolve(__dirname, 'src'),
-      }
+      },
     },
-    // Generate sourcemaps for proper error messages
-    devtool: 'source-map',
+    devtool: 'source-map', // Generate sourcemaps for proper error messages
     performance: {
-      // Turn off size warnings for entry points
-      hints: false,
+      hints: false, // Turn off size warnings for entry points
     },
     stats: {
-      // Turn off information about the built modules.
-      modules: false,
+      modules: false, // Turn off information about the built modules
       colors: true,
     },
-    /// -------
-    /// MODULES
-    /// -------
     module: {
       rules: [
         {
           test: /\.(html)$/,
           use: {
-            loader: "html-srcsets-loader",
+            loader: 'html-srcsets-loader',
             options: {
-              attrs: [":src", ':srcset'],
+              attrs: [':src', ':srcset'],
               interpolate: true,
               minimize: false,
               removeComments: false,
-            }
-          }
+            },
+          },
         },
         {
           test: /\.(sa|sc|c)ss$/,
@@ -68,34 +70,32 @@ module.exports = function (env, args) {
               options: {
                 esModule: true,
                 publicPath: '../',
-              }
+              },
             },
             {
               loader: 'css-loader',
               options: {
                 importLoaders: 2,
-                sourceMap: true
-              }
+                sourceMap: true,
+              },
             },
-            {
-              loader: 'resolve-url-loader',
-            },
+            'resolve-url-loader',
             {
               loader: 'postcss-loader',
               options: {
                 postcssOptions: {
                   plugins: {
-                    'autoprefixer': {},
+                    autoprefixer: {},
                   },
                 },
-                sourceMap: true
-              }
+                sourceMap: true,
+              },
             },
             {
               loader: 'sass-loader',
               options: {
                 sourceMap: true,
-              }
+              },
             },
           ],
         },
@@ -122,40 +122,20 @@ module.exports = function (env, args) {
           type: 'asset/resource',
           generator: {
             filename: 'fonts/[name]-[hash][ext][query]',
-          }
+          },
         },
       ],
     },
-    /// -------
-    /// PLUGINS
-    /// -------
     plugins: [
-      // sync html files dynamically
-      ...glob.sync('src/html/**/*.html').map(fileName => {
-        return new HtmlWebpackPlugin({
-          template: fileName,
-          minify: false, // Disable minification during production mode
-          filename: fileName.replace("src/html/", ""),
+      new WatchHtmlPlugin({
+        srcDir: 'src/html',
+        htmlPluginOptions: {
           hash: true,
-        });
-      }),
-      new BrowserSyncPlugin({
-          ...devServerConfiguration,
-          server: {
-            baseDir: ['dist']
-          },
-          files: [path.resolve(__dirname, 'src/**/*')],
-          ghostMode: {
-            location: false,
-          },
-          injectChanges: true,
-          logFileChanges: true,
         },
-        {
-          // prevent BrowserSync from reloading the page
-          // and let Webpack Dev Server take care of this
-          reload: false
-        }),
+      }),
+      new BrowserSyncPlugin(devServerConfiguration, {
+        reload: false,
+      }),
       new ESLintPlugin({
         emitError: true,
         emitWarning: true,
@@ -169,14 +149,12 @@ module.exports = function (env, args) {
       }),
       new MiniCssExtractPlugin({
         filename: './css/styles.css',
-        experimentalUseImportModule: false
+        experimentalUseImportModule: false,
       }),
-    ]
-  }
+    ],
+  };
+};
 
-}
-
-// Read this
 // eslint-disable-next-line no-console
 console.log(
   '\x1b[41m\x1b[38m%s\x1b[0m',
