@@ -154,9 +154,3 @@ module.exports = function (env, args) {
     ],
   };
 };
-
-// eslint-disable-next-line no-console
-console.log(
-  '\x1b[41m\x1b[38m%s\x1b[0m',
-  '\n[REMEMBER TO RESTART THE SERVER WHEN YOU ADD A NEW HTML FILE.]\n'
-);
