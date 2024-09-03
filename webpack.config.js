@@ -1,30 +1,30 @@
-const path = require('path');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const StylelintPlugin = require('stylelint-webpack-plugin');
-const WatchHtmlPlugin = require('./WatchHtmlPlugin');
+const path = require("path");
+const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
+const ESLintPlugin = require("eslint-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const StylelintPlugin = require("stylelint-webpack-plugin");
+const WatchHtmlPlugin = require("./WatchHtmlPlugin");
 
 // Development server configuration
 const devServerConfiguration = {
-  host: 'localhost',
+  host: "localhost",
   port: 8080,
-  open: 'external',
+  open: "external",
   hot: true, // Enable Hot Module Replacement (HMR)
   liveReload: true, // Enable live reloading
   reload: false,
   watch: true,
   notify: true,
   reloadDelay: 0,
-  watchFiles: ['src/html/**/*.html'], // Watch HTML files
-  static: path.resolve(__dirname, 'dist'),
+  watchFiles: ["src/html/**/*.html"], // Watch HTML files
+  static: path.resolve(__dirname, "dist"),
   client: {
     overlay: true, // Display errors in the browser
   },
   server: {
-    baseDir: ['dist'],
+    baseDir: ["dist"],
   },
-  files: [path.resolve(__dirname, 'src/**/*')],
+  files: [path.resolve(__dirname, "src/**/*")],
   ghostMode: {
     location: false,
   },
@@ -34,17 +34,17 @@ const devServerConfiguration = {
 
 module.exports = function (env, args) {
   return {
-    entry: './src/index.js',
+    entry: "./src/index.js",
     output: {
-      path: path.resolve(__dirname, 'dist'),
-      filename: './js/index.bundle.js',
+      path: path.resolve(__dirname, "dist"),
+      filename: "./js/index.bundle.js",
     },
     resolve: {
       alias: {
-        src: path.resolve(__dirname, 'src'),
+        src: path.resolve(__dirname, "src"),
       },
     },
-    devtool: 'source-map', // Generate sourcemaps for proper error messages
+    devtool: "source-map", // Generate sourcemaps for proper error messages
     performance: {
       hints: false, // Turn off size warnings for entry points
     },
@@ -57,9 +57,9 @@ module.exports = function (env, args) {
         {
           test: /\.(html)$/,
           use: {
-            loader: 'html-srcsets-loader',
+            loader: "html-srcsets-loader",
             options: {
-              attrs: [':src', ':srcset'],
+              attrs: [":src", ":srcset"],
               interpolate: true,
               minimize: false,
               removeComments: false,
@@ -73,19 +73,19 @@ module.exports = function (env, args) {
               loader: MiniCssExtractPlugin.loader,
               options: {
                 esModule: true,
-                publicPath: '../',
+                publicPath: "../",
               },
             },
             {
-              loader: 'css-loader',
+              loader: "css-loader",
               options: {
                 importLoaders: 2,
                 sourceMap: true,
               },
             },
-            'resolve-url-loader',
+            "resolve-url-loader",
             {
-              loader: 'postcss-loader',
+              loader: "postcss-loader",
               options: {
                 postcssOptions: {
                   plugins: {
@@ -96,7 +96,7 @@ module.exports = function (env, args) {
               },
             },
             {
-              loader: 'sass-loader',
+              loader: "sass-loader",
               options: {
                 sourceMap: true,
               },
@@ -105,34 +105,34 @@ module.exports = function (env, args) {
         },
         {
           test: /\.(js)$/,
-          loader: 'babel-loader',
+          loader: "babel-loader",
         },
         {
           test: /\.(png|svg|jpe?g|gif)$/,
-          type: 'asset/resource',
+          type: "asset/resource",
           generator: {
-            filename: 'images/[hash][ext]',
+            filename: "images/[hash][ext]",
           },
         },
         {
           test: /(favicon\.ico|site\.webmanifest|browserconfig\.xml|robots\.txt|humans\.txt)$/,
-          loader: 'file-loader',
+          loader: "file-loader",
           options: {
-            name: '[name].[ext]',
+            name: "[name].[ext]",
           },
         },
         {
           test: /\.(woff(2)?|ttf|eot)(\?[a-z0-9=.]+)?$/,
-          type: 'asset/resource',
+          type: "asset/resource",
           generator: {
-            filename: 'fonts/[name]-[hash][ext][query]',
+            filename: "fonts/[name]-[hash][ext][query]",
           },
         },
       ],
     },
     plugins: [
       new WatchHtmlPlugin({
-        srcDir: 'src/html',
+        srcDir: "src/html",
         htmlPluginOptions: {
           hash: true,
         },
@@ -143,16 +143,16 @@ module.exports = function (env, args) {
       new ESLintPlugin({
         emitError: true,
         emitWarning: true,
-        context: path.resolve(__dirname, 'src/scripts'),
+        context: path.resolve(__dirname, "src/scripts"),
       }),
       new StylelintPlugin({
         emitErrors: true,
         emitWarning: true,
-        configFile: path.resolve(__dirname, '.stylelintrc.js'),
-        context: path.resolve(__dirname, 'src/assets/styles'),
+        configFile: path.resolve(__dirname, ".stylelintrc.js"),
+        context: path.resolve(__dirname, "src/assets/styles"),
       }),
       new MiniCssExtractPlugin({
-        filename: './css/styles.css',
+        filename: "./css/styles.css",
         experimentalUseImportModule: false,
       }),
     ],
