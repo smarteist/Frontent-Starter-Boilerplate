@@ -1,4 +1,4 @@
-# FRONTEND BOILERPLATE
+# WEBPACK FRONTEND BOILERPLATE
 
 [![Bootstrap](https://img.shields.io/static/v1?label=Bootstrap&message=5.0.1&color=blueviolet)](https://getbootstrap.com)
 [![FontAwesome](https://img.shields.io/static/v1?label=FontAwesome&message=4.7.0&color=brightgreen)](http://fontawesome.com/v4.7.0)
