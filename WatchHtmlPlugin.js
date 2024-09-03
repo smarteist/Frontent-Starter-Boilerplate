@@ -47,7 +47,7 @@ module.exports = class WatchHtmlPlugin {
   }
 
   setupFileWatcher() {
-    this.watcher = chokidar.watch(`${this.options.srcDir}/**/*.html`, {ignoreInitial: true});
+    this.watcher = chokidar.watch(`${this.options.srcDir}/*.html`, {ignoreInitial: true});
     this.watcher.on('add', this.debounceRestart.bind(this));
     this.watcher.on('unlink', this.debounceRestart.bind(this));
     this.watcher.on('error', error => console.error(colors.bgRed.whiteBright(`[WatchHtmlPlugin] Watcher error: ${error}`)));
