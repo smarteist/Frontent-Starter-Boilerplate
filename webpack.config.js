@@ -12,6 +12,10 @@ const devServerConfiguration = {
   open: 'external',
   hot: true, // Enable Hot Module Replacement (HMR)
   liveReload: true, // Enable live reloading
+  reload: false,
+  watch: true,
+  notify: true,
+  reloadDelay: 0,
   watchFiles: ['src/html/**/*.html'], // Watch HTML files
   static: path.resolve(__dirname, 'dist'),
   client: {
